@@ -99,7 +99,7 @@ export default function SummarizePage() {
                         <SelectContent>
                           {Array.from({ length: 10 }, (_, i) => i + 1).map((grade) => (
                             <SelectItem key={grade} value={String(grade)}>
-                              {grade}st Grade
+                              Grade {grade}
                             </SelectItem>
                           ))}
                         </SelectContent>
