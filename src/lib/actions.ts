@@ -2,7 +2,7 @@
 'use server';
 
 import { z } from 'zod';
-import { answerQuestionsFromTextbook } from '@/ai/flows/answer-questions-from-textbook';
+import { adaptAiToUserEmotion } from '@/ai/flows/adapt-ai-to-user-emotion';
 import { summarizeTextbookContent } from '@/ai/flows/summarize-textbook-content';
 import { generateImageFromTextbook } from '@/ai/flows/generate-image-from-textbook';
 import { convertSpeechToText } from '@/ai/flows/convert-speech-to-text';
@@ -16,7 +16,12 @@ const qaSchema = z.object({
 
 export async function getAnswerAction(input: z.infer<typeof qaSchema>) {
   const validatedInput = qaSchema.parse(input);
-  return await answerQuestionsFromTextbook(validatedInput);
+  const result = await adaptAiToUserEmotion({
+    query: validatedInput.question,
+    emotion: validatedInput.emotionalTone,
+    gradeLevel: String(validatedInput.grade),
+  });
+  return { answer: result.adaptedResponse };
 }
 
 const summarizeSchema = z.object({
