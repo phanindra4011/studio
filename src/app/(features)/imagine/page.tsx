@@ -28,6 +28,9 @@ export default function ImaginePage() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(imagineSchema),
+    defaultValues: {
+      textbookDescription: '',
+    },
   });
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
