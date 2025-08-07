@@ -14,18 +14,20 @@ export default function QAPage() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
+  const generateId = () => Math.random().toString(36).substring(2, 15);
+
   const handleSubmit = async (input: string, grade: string, emotion: string) => {
     if (!input.trim()) return;
 
     const userMessage: Message = {
-      id: crypto.randomUUID(),
+      id: generateId(),
       role: 'user',
       content: input,
     };
     setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
 
-    const assistantMessagePlaceholderId = crypto.randomUUID();
+    const assistantMessagePlaceholderId = generateId();
     
     try {
       const result = await getAnswerAction({ question: input, grade: parseInt(grade), emotionalTone: emotion });
