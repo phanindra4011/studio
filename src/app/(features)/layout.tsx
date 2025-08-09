@@ -17,6 +17,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import React from "react";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -54,40 +55,50 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild isActive={pathname === "/qa"} tooltip="Chat">
                 <Link href="/qa">
-                  <BotMessageSquare />
-                  <span>Chat</span>
+                  <React.Fragment>
+                    <BotMessageSquare />
+                    <span>Chat</span>
+                  </React.Fragment>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild isActive={pathname === "/summarize"} tooltip="Summarize">
                 <Link href="/summarize">
-                  <BookText />
-                  <span>Summarize</span>
+                  <React.Fragment>
+                    <BookText />
+                    <span>Summarize</span>
+                  </React.Fragment>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild isActive={pathname === "/imagine"} tooltip="Imagine">
                 <Link href="/imagine">
-                  <ImageIcon />
-                  <span>Imagine</span>
+                  <React.Fragment>
+                    <ImageIcon />
+                    <span>Imagine</span>
+                  </React.Fragment>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
              <SidebarMenuItem>
                 <SidebarMenuButton size="lg" asChild isActive={pathname === "/translate"} tooltip="Translate">
                     <Link href="/translate">
-                        <Languages />
-                        <span>Translate</span>
+                        <React.Fragment>
+                            <Languages />
+                            <span>Translate</span>
+                        </React.Fragment>
                     </Link>
                 </SidebarMenuButton>
              </SidebarMenuItem>
              <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild isActive={pathname === "/history"} tooltip="History">
                 <Link href="/history">
-                  <History />
-                  <span>History</span>
+                  <React.Fragment>
+                    <History />
+                    <span>History</span>
+                  </React.Fragment>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -97,11 +108,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <SidebarMenuItem>
                     <SidebarMenuButton size="lg" asChild isActive={pathname === "/profile"} tooltip="Profile">
                         <Link href="#">
-                            <Avatar className="size-8">
-                                <AvatarImage src="https://placehold.co/100x100.png" alt="User Avatar" />
-                                <AvatarFallback>N</AvatarFallback>
-                            </Avatar>
-                            <span>Profile</span>
+                            <React.Fragment>
+                                <Avatar className="size-8">
+                                    <AvatarImage src="https://placehold.co/100x100.png" alt="User Avatar" />
+                                    <AvatarFallback>N</AvatarFallback>
+                                </Avatar>
+                                <span>Profile</span>
+                            </React.Fragment>
                         </Link>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
