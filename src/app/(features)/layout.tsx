@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Bot, BotMessageSquare, ImageIcon, BookText, History, Mic, Languages } from "lucide-react";
@@ -53,70 +52,58 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarHeader>
           <SidebarMenu className="px-2">
             <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild isActive={pathname === "/qa"} tooltip="Chat">
                 <Link href="/qa">
-                  <React.Fragment>
+                  <SidebarMenuButton size="lg" isActive={pathname === "/qa"} tooltip="Chat">
                     <BotMessageSquare />
                     <span>Chat</span>
-                  </React.Fragment>
+                  </SidebarMenuButton>
                 </Link>
-              </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild isActive={pathname === "/summarize"} tooltip="Summarize">
                 <Link href="/summarize">
-                  <React.Fragment>
+                  <SidebarMenuButton size="lg" isActive={pathname === "/summarize"} tooltip="Summarize">
                     <BookText />
                     <span>Summarize</span>
-                  </React.Fragment>
+                  </SidebarMenuButton>
                 </Link>
-              </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild isActive={pathname === "/imagine"} tooltip="Imagine">
                 <Link href="/imagine">
-                  <React.Fragment>
+                  <SidebarMenuButton size="lg" isActive={pathname === "/imagine"} tooltip="Imagine">
                     <ImageIcon />
                     <span>Imagine</span>
-                  </React.Fragment>
+                  </SidebarMenuButton>
                 </Link>
-              </SidebarMenuButton>
             </SidebarMenuItem>
              <SidebarMenuItem>
-                <SidebarMenuButton size="lg" asChild isActive={pathname === "/translate"} tooltip="Translate">
-                    <Link href="/translate">
-                        <React.Fragment>
-                            <Languages />
-                            <span>Translate</span>
-                        </React.Fragment>
-                    </Link>
-                </SidebarMenuButton>
+                <Link href="/translate">
+                    <SidebarMenuButton size="lg" isActive={pathname === "/translate"} tooltip="Translate">
+                        <Languages />
+                        <span>Translate</span>
+                    </SidebarMenuButton>
+                 </Link>
              </SidebarMenuItem>
              <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild isActive={pathname === "/history"} tooltip="History">
                 <Link href="/history">
-                  <React.Fragment>
+                  <SidebarMenuButton size="lg" isActive={pathname === "/history"} tooltip="History">
                     <History />
                     <span>History</span>
-                  </React.Fragment>
+                  </SidebarMenuButton>
                 </Link>
-              </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
           <SidebarFooter className="p-2 mt-auto">
              <SidebarMenu>
                 <SidebarMenuItem>
-                    <SidebarMenuButton size="lg" asChild isActive={pathname === "/profile"} tooltip="Profile">
-                        <Link href="#">
-                            <React.Fragment>
-                                <Avatar className="size-8">
-                                    <AvatarImage src="https://placehold.co/100x100.png" alt="User Avatar" />
-                                    <AvatarFallback>N</AvatarFallback>
-                                </Avatar>
-                                <span>Profile</span>
-                            </React.Fragment>
-                        </Link>
-                    </SidebarMenuButton>
+                    <Link href="#">
+                        <SidebarMenuButton size="lg" isActive={pathname === "/profile"} tooltip="Profile">
+                            <Avatar className="size-8">
+                                <AvatarImage src="https://placehold.co/100x100.png" alt="User Avatar" />
+                                <AvatarFallback>N</AvatarFallback>
+                            </Avatar>
+                            <span>Profile</span>
+                        </SidebarMenuButton>
+                    </Link>
                 </SidebarMenuItem>
              </SidebarMenu>
           </SidebarFooter>
