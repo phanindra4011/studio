@@ -34,17 +34,20 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarProvider>
-      <Sidebar>
+      <Sidebar variant="inset" collapsible="icon">
         <SidebarContent>
           <SidebarHeader className="p-4">
-            <Link href="/qa" className="flex items-center gap-2">
+            <Link href="/qa" className="flex items-center gap-3">
                 <Sparkles className="w-8 h-8 text-primary" />
-                <h1 className="text-2xl font-bold font-headline">Vidyarthi AI</h1>
+                <div className="flex flex-col">
+                  <h1 className="text-xl font-bold font-headline">Vidyarthi AI</h1>
+                  <p className="text-xs text-muted-foreground">Your AI Tutor</p>
+                </div>
             </Link>
           </SidebarHeader>
-          <SidebarMenu>
+          <SidebarMenu className="px-2">
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={pathname === "/qa"} tooltip="Q&A">
+              <SidebarMenuButton size="lg" asChild isActive={pathname === "/qa"} tooltip="Q&A">
                 <Link href="/qa">
                   <BotMessageSquare />
                   <span>Q&A</span>
@@ -52,7 +55,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={pathname === "/summarize"} tooltip="Summarize">
+              <SidebarMenuButton size="lg" asChild isActive={pathname === "/summarize"} tooltip="Summarize">
                 <Link href="/summarize">
                   <BookText />
                   <span>Summarize</span>
@@ -60,7 +63,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={pathname === "/imagine"} tooltip="Imagine">
+              <SidebarMenuButton size="lg" asChild isActive={pathname === "/imagine"} tooltip="Imagine">
                 <Link href="/imagine">
                   <ImageIcon />
                   <span>Imagine</span>
@@ -71,9 +74,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
-        <header className="sticky top-0 z-10 flex items-center justify-between h-14 px-4 border-b bg-background/80 backdrop-blur-sm">
-            <SidebarTrigger />
-            <h2 className="text-lg font-semibold font-headline">
+        <header className="sticky top-0 z-10 flex items-center justify-between h-14 px-4 border-b bg-background/60 backdrop-blur-sm">
+            <SidebarTrigger className="md:hidden" />
+            <h2 className="text-lg font-semibold font-headline hidden md:block">
                 {getPageTitle()}
             </h2>
              <div className="w-7 h-7" />

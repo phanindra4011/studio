@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import type { Message } from '@/lib/types';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Bot, User, Volume2, Loader2, AlertTriangle } from 'lucide-react';
 import { textToSpeechAction } from '@/lib/actions';
@@ -40,9 +40,10 @@ export default function ChatMessage({ message }: ChatMessageProps) {
   const isAssistant = message.role === 'assistant';
 
   return (
-    <div className={cn('flex items-start gap-3', isAssistant ? 'justify-start' : 'justify-end')}>
+    <div className={cn('flex items-start gap-4', isAssistant ? 'justify-start' : 'justify-end')}>
       {isAssistant && (
         <Avatar className="h-9 w-9 border-2 border-primary/50">
+           <AvatarImage src="/vidyarthi-logo.png" alt="Vidyarthi AI" />
           <AvatarFallback className="bg-primary/20 text-primary">
             <Bot className="h-5 w-5" />
           </AvatarFallback>
@@ -50,7 +51,7 @@ export default function ChatMessage({ message }: ChatMessageProps) {
       )}
       <div
         className={cn(
-          'max-w-xl rounded-lg p-3 text-sm shadow-sm',
+          'max-w-xl rounded-lg p-4 text-base shadow-sm',
           isAssistant
             ? 'bg-card'
             : 'bg-primary text-primary-foreground',
@@ -58,12 +59,12 @@ export default function ChatMessage({ message }: ChatMessageProps) {
         )}
       >
         {message.isError && <AlertTriangle className="inline-block mr-2 h-4 w-4" />}
-        <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">{message.content}</div>
+        <div className="prose prose-base dark:prose-invert max-w-none whitespace-pre-wrap">{message.content}</div>
         {isAssistant && typeof message.content === 'string' && message.content && !message.isError && (
           <Button
             size="sm"
             variant="ghost"
-            className="mt-2 h-7 px-2"
+            className="mt-2 h-7 px-2 text-muted-foreground"
             onClick={handleTextToSpeech}
             disabled={isSpeaking}
             aria-label="Read message aloud"
@@ -79,6 +80,7 @@ export default function ChatMessage({ message }: ChatMessageProps) {
       </div>
       {!isAssistant && (
         <Avatar className="h-9 w-9 border">
+           <AvatarImage src="/user-avatar.png" alt="User" />
           <AvatarFallback className="bg-secondary">
             <User className="h-5 w-5" />
           </AvatarFallback>

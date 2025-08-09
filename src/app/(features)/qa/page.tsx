@@ -7,7 +7,7 @@ import ChatInput from '@/components/chat/ChatInput';
 import type { Message } from '@/lib/types';
 import { getAnswerAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
-import { BotMessageSquare, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 let messageIdCounter = 0;
 const generateId = () => {
@@ -65,7 +65,7 @@ export default function QAPage() {
       <div className="bg-primary/10 p-4 rounded-full mb-4">
         <Sparkles className="w-12 h-12 text-primary" />
       </div>
-      <h2 className="text-2xl font-bold font-headline mb-2">Welcome to Vidyarthi AI!</h2>
+      <h2 className="text-3xl font-bold font-headline mb-2">Welcome to Vidyarthi AI!</h2>
       <p className="text-muted-foreground max-w-md">
         Your personal AI tutor for Telangana textbooks. Select your grade, share how you're feeling, and ask me anything about your lessons!
       </p>
@@ -77,7 +77,7 @@ export default function QAPage() {
         <div className="flex-1 overflow-y-auto">
           {messages.length === 0 ? welcomeScreen : <ChatMessages messages={messages} isLoading={isLoading} />}
         </div>
-      <div className="p-4 bg-background/70 backdrop-blur-sm border-t">
+      <div className="p-4 bg-background/80 backdrop-blur-sm border-t">
         <div className="max-w-4xl mx-auto">
           <ChatInput onSubmit={handleSubmit} isLoading={isLoading} />
         </div>

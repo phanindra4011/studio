@@ -9,7 +9,6 @@ import { Mic, Send, Loader2, Square, AlertTriangle } from 'lucide-react';
 import { useRecorder } from '@/hooks/use-recorder';
 import { speechToTextAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Badge } from '../ui/badge';
 import { Alert, AlertDescription } from '../ui/alert';
 
@@ -101,10 +100,10 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center gap-2">
         {SUGGESTIONS.map((s, i) => (
-            <Badge key={i} variant="outline" className="cursor-pointer hover:bg-accent" onClick={() => handleSuggestionClick(s)}>{s}</Badge>
+            <Badge key={i} variant="outline" className="cursor-pointer hover:bg-primary/10" onClick={() => handleSuggestionClick(s)}>{s}</Badge>
         ))}
       </div>
-      <div className="relative flex w-full items-end gap-2 rounded-lg border bg-background p-2">
+      <div className="relative flex w-full items-end gap-2 rounded-lg border bg-card p-2 shadow-sm">
         <div className="flex gap-1.5">
           <Select value={grade} onValueChange={setGrade}>
             <SelectTrigger className="w-28" aria-label="Select Grade">
@@ -138,10 +137,10 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           placeholder="Ask a question or describe a topic..."
-          className="flex-1 resize-none border-0 shadow-none focus-visible:ring-0 max-h-48"
+          className="flex-1 resize-none border-0 shadow-none focus-visible:ring-0 max-h-48 bg-transparent"
           rows={1}
         />
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <Button
             size="icon"
             variant={isRecording ? 'destructive' : 'ghost'}
@@ -167,9 +166,9 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
           </Button>
         </div>
       </div>
-      <Alert className="py-2">
+      <Alert className="py-2 bg-transparent border-0">
         <AlertTriangle className="h-4 w-4" />
-        <AlertDescription className="text-xs">
+        <AlertDescription className="text-xs text-muted-foreground">
             AI-generated content can have mistakes. Please verify important information.
         </AlertDescription>
       </Alert>
