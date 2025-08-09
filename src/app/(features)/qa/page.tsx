@@ -9,12 +9,16 @@ import { getAnswerAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
 import { BotMessageSquare, Sparkles } from 'lucide-react';
 
+let messageIdCounter = 0;
+const generateId = () => {
+  messageIdCounter++;
+  return messageIdCounter.toString();
+};
+
 export default function QAPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-
-  const generateId = () => Math.random().toString(36).substring(2, 15);
 
   const handleSubmit = async (input: string, grade: string, emotion: string) => {
     if (!input.trim()) return;
