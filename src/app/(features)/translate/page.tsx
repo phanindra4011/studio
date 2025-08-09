@@ -15,8 +15,8 @@ import { Loader2, Languages, ArrowRightLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const translateSchema = z.object({
-  text: z.string().min(2, 'అనువదించడానికి దయచేసి కనీసం 2 అక్షరాలను నమోదు చేయండి.').max(3000, "టెక్స్ట్ తప్పనిసరిగా 3000 అక్షరాలు లేదా అంతకంటే తక్కువగా ఉండాలి."),
-  targetLanguage: z.string({ required_error: 'దయచేసి భాషను ఎంచుకోండి.' }),
+  text: z.string().min(2, 'అనువాదం కోసం కనీసం 2 అక్షరాలు నమోదు చేయండి.').max(3000, "టెక్స్ట్ 3000 అక్షరాలకు మించకూడదు."),
+  targetLanguage: z.string({ required_error: 'దయచేసి ఒక భాషను ఎంచుకోండి.' }),
 });
 
 type FormValues = z.infer<typeof translateSchema>;
@@ -50,8 +50,8 @@ export default function TranslatePage() {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'అనువాదం విఫలమైంది',
-        description: (error as Error).message || 'టెక్స్ట్‌ని అనువదించడం సాధ్యపడలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి.',
+        title: 'అనువాదంలో లోపం',
+        description: (error as Error).message || 'టెక్స్ట్‌ను అనువదించడం సాధ్యపడలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి.',
       });
     } finally {
       setIsLoading(false);
@@ -63,9 +63,9 @@ export default function TranslatePage() {
       <div className="max-w-4xl mx-auto grid gap-8">
         <Card>
           <CardHeader>
-            <CardTitle>టెక్స్ట్‌ని అనువదించండి</CardTitle>
+            <CardTitle>అనువాదం</CardTitle>
             <CardDescription>
-              కొంత టెక్స్ట్‌ని నమోదు చేసి, దానిని అనువదించడానికి భాషను ఎంచుకోండి.
+              టెక్స్ట్‌ను నమోదు చేసి, దానిని అనువదించడానికి ఒక భాషను ఎంచుకోండి.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -79,7 +79,7 @@ export default function TranslatePage() {
                       <FormLabel>అనువదించాల్సిన టెక్స్ట్</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="మీరు అనువదించాలనుకుంటున్న టెక్స్ట్‌ని నమోదు చేయండి..."
+                          placeholder="మీరు అనువదించాలనుకుంటున్న టెక్స్ట్‌ను ఇక్కడ నమోదు చేయండి..."
                           className="min-h-[150px] resize-y"
                           {...field}
                         />
@@ -93,7 +93,7 @@ export default function TranslatePage() {
                   name="targetLanguage"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>లక్ష్య భాష</FormLabel>
+                      <FormLabel>కావాల్సిన భాష</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
@@ -135,7 +135,7 @@ export default function TranslatePage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Languages className="text-primary" />
-                అనువదించబడిన టెక్స్ట్
+                అనువదించిన టెక్స్ట్
               </CardTitle>
             </CardHeader>
             <CardContent>

@@ -32,13 +32,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       case '/qa':
         return 'చాట్';
       case '/summarize':
-        return 'సంగ్రహించు';
+        return 'సంగ్రహం';
       case '/imagine':
-        return 'ఊహించు';
+        return 'చిత్రం';
       case '/history':
         return 'చరిత్ర';
       case '/translate':
-          return 'అనువదించు';
+          return 'అనువాదం';
       default:
         return 'తెలుగు తోడు';
     }
@@ -70,30 +70,30 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <Link href="/summarize">
-                  <SidebarMenuButton size="lg" isActive={pathname === "/summarize"} tooltip="సంగ్రహించు">
+                  <SidebarMenuButton size="lg" isActive={pathname === "/summarize"} tooltip="సంగ్రహం">
                     <>
                       <BookText />
-                      <span>సంగ్రహించు</span>
+                      <span>సంగ్రహం</span>
                     </>
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <Link href="/imagine">
-                  <SidebarMenuButton size="lg" isActive={pathname === "/imagine"} tooltip="ఊహించు">
+                  <SidebarMenuButton size="lg" isActive={pathname === "/imagine"} tooltip="చిత్రం">
                     <>
                       <ImageIcon />
-                      <span>ఊహించు</span>
+                      <span>చిత్రం</span>
                     </>
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
              <SidebarMenuItem>
                 <Link href="/translate">
-                    <SidebarMenuButton size="lg" isActive={pathname === "/translate"} tooltip="అనువదించు">
+                    <SidebarMenuButton size="lg" isActive={pathname === "/translate"} tooltip="అనువాదం">
                         <>
                             <Languages />
-                            <span>అనువదించు</span>
+                            <span>అనువాదం</span>
                         </>
                     </SidebarMenuButton>
                  </Link>

@@ -38,14 +38,14 @@ const summarizeTextbookContentPrompt = ai.definePrompt({
   output: {schema: SummarizeTextbookContentOutputSchema},
   prompt: `You are an expert summarizer for Telangana state board textbooks, skilled at providing simple Telugu summaries for students. You should only respond in Telugu.
 
-  Please provide a concise summary of the following textbook content, tailored to a student in grade {{gradeLevel}}. Make sure the summary uses simple Telugu that is easy for students to understand.
+  Please provide a concise summary of the following textbook content, tailored to a student in grade {{gradeLevel}}. Make sure the summary uses simple, easily understandable Telugu that is easy for students to understand.
 
   Here is the textbook content:
   {{textbookContent}}
 
   {% if studentQuery %}The student has the following specific query: {{studentQuery}}{% endif %}
 
-  Make sure you output the result in simple Telugu. Your summarization should focus on the core concepts. Keep it concise, while not losing key details. Format the summary so that it is very readable.
+  Make sure you output the result in simple, easily understandable Telugu. Your summarization should focus on the core concepts. Keep it concise, while not losing key details. Format the summary so that it is very readable.
 
   It is OK if you make mistakes so please double check the output from the AI.
   `,
@@ -61,7 +61,7 @@ const summarizeTextbookContentFlow = ai.defineFlow(
     const {output} = await summarizeTextbookContentPrompt(input);
     return {
       ...output!,
-      progress: 'పాఠ్యపుస్తకంలోని కంటెంట్ విద్యార్థికి అనువైన కీలక అంశాలలో సంగ్రహించబడింది.',
+      progress: 'పాఠ్యపుస్తకంలోని ముఖ్యాంశాలు మీకోసం సులభంగా సంగ్రహించబడ్డాయి.',
     };
   }
 );

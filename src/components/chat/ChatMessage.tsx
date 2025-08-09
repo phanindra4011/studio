@@ -30,7 +30,7 @@ export default function ChatMessage({ message }: ChatMessageProps) {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'టెక్స్ట్-టు-స్పీచ్ విఫలమైంది',
+        title: 'వినడంలో లోపం',
         description: 'ఆడియోను ప్లే చేయడం సాధ్యపడలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి.',
       });
       setIsSpeaking(false);

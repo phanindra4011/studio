@@ -10,19 +10,19 @@ import { ChartConfig, ChartContainer, ChartTooltipContent } from '@/components/u
 
 const chartConfig = {
     qa: {
-      label: 'ప్రశ్న & జవాబు',
+      label: 'ప్రశ్న-జవాబు',
       color: 'hsl(var(--chart-1))',
     },
     summarize: {
-      label: 'సంగ్రహించు',
+      label: 'సంగ్రహం',
       color: 'hsl(var(--chart-2))',
     },
     imagine: {
-      label: 'ఊహించు',
+      label: 'చిత్రం',
       color: 'hsl(var(--chart-3))',
     },
     translate: {
-      label: 'అనువదించు',
+      label: 'అనువాదం',
       color: 'hsl(var(--chart-4))',
     },
 } satisfies ChartConfig;
@@ -57,7 +57,7 @@ export default function HistoryPage() {
     if (!historyData) {
         return (
             <div className="flex items-center justify-center h-[calc(100svh-3.5rem)]">
-                <p>వినియోగ చరిత్రను లోడ్ చేయడం సాధ్యపడలేదు.</p>
+                <p>మీ వాడుక చరిత్రను చూపడం సాధ్యపడలేదు.</p>
             </div>
         );
     }
@@ -67,9 +67,9 @@ export default function HistoryPage() {
             <div className="max-w-6xl mx-auto grid gap-8">
                 <Card>
                     <CardHeader>
-                        <CardTitle>వినియోగ చరిత్ర</CardTitle>
+                        <CardTitle>మీ వాడుక చరిత్ర</CardTitle>
                         <CardDescription>
-                            గత వారం మీ కార్యకలాపాల సారాంశం ఇక్కడ ఉంది.
+                            గత వారం మీరు యాప్‌ను ఎలా ఉపయోగించారో ఇక్కడ చూడండి.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>

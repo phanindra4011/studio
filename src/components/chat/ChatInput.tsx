@@ -38,8 +38,8 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'స్పీచ్-టు-టెక్స్ట్ విఫలమైంది',
-        description: (error as Error).message || 'ఆడియోను ప్రాసెస్ చేయడం సాధ్యపడలేదు.',
+        title: 'వాయిస్ రికార్డింగ్‌లో లోపం',
+        description: (error as Error).message || 'ఆడియోను టెక్స్ట్‌గా మార్చడం సాధ్యపడలేదు.',
       });
     } finally {
       setIsRecordingLoading(false);
@@ -55,7 +55,7 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
       setInput(text);
     } else {
         toast({
-            title: "పద పరిమితికి చేరుకుంది",
+            title: "పదాల పరిమితికి చేరుకున్నారు",
             description: "ఇన్‌పుట్ 3000 పదాలకు పరిమితం చేయబడింది.",
         })
     }
@@ -100,7 +100,7 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
             variant={isRecording ? 'destructive' : 'ghost'}
             onClick={toggleRecording}
             disabled={isRecordingLoading}
-            aria-label={isRecording ? "రికార్డింగ్ ఆపండి" : "రికార్డింగ్ ప్రారంభించండి"}
+            aria-label={isRecording ? "రికార్డింగ్ ఆపండి" : "మాట్లాడి అడగండి"}
           >
             {isRecordingLoading ? (
               <Loader2 className="h-5 w-5 animate-spin" />
@@ -114,7 +114,7 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
             size="icon"
             onClick={handleSend}
             disabled={isLoading || !input.trim()}
-            aria-label="సందేశం పంపండి"
+            aria-label="పంపండి"
           >
             {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
           </Button>
@@ -122,7 +122,7 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
       </div>
       <Alert className="py-2 bg-transparent border-0 px-0">
         <AlertDescription className="text-xs text-muted-foreground text-center">
-            తెలుగు తోడు తప్పులు చేయగలదు. దయచేసి సమాచారాన్ని రెండుసార్లు తనిఖీ చేయండి.
+            తెలుగు తోడు తప్పులు చేయగలదు. దయచేసి సమాచారాన్ని సరిచూసుకోండి.
         </AlertDescription>
       </Alert>
     </div>

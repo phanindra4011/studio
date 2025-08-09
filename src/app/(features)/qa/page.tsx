@@ -50,14 +50,14 @@ export default function QAPage() {
       const errorMessage: Message = {
         id: assistantMessagePlaceholderId,
         role: 'assistant',
-        content: 'క్షమించండి, నాకు ఒక లోపం ఎదురైంది. దయచేసి మీ ఇన్‌పుట్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.',
+        content: 'క్షమించండి, ఒక లోపం జరిగింది. దయచేసి మళ్ళీ ప్రయత్నించండి.',
         isError: true,
       };
        setMessages((prev) => [...prev, errorMessage]);
       toast({
         variant: 'destructive',
         title: 'ఒక లోపం సంభవించింది',
-        description: (error as Error).message || 'AI నుండి ప్రతిస్పందన పొందడంలో విఫలమైంది.',
+        description: (error as Error).message || 'AI నుండి జవాబు పొందడంలో సమస్య ఉంది.',
       })
     } finally {
       setIsLoading(false);
@@ -69,9 +69,9 @@ export default function QAPage() {
       <div className="bg-primary/10 p-4 rounded-full mb-4">
         <Bot className="w-12 h-12 text-primary" />
       </div>
-      <h2 className="text-3xl font-bold font-headline mb-2">నమస్కారం! నేను తెలుగు తోడు</h2>
+      <h2 className="text-3xl font-bold font-headline mb-2">నమస్కారం! నేను మీ తెలుగు తోడు</h2>
       <p className="text-muted-foreground max-w-md mb-8">
-        మీ స్నేహపూర్వక AI-ఆధారిత అధ్యయన భాగస్వామి. ఈ రోజు నేను మీకు ఎలా సహాయపడగలను?
+        మీ చదువులో సహాయం చేసే AI స్నేహితుడిని. ఈ రోజు నేను మీకు ఎలా సహాయపడగలను?
       </p>
       <Card className="max-w-2xl w-full">
         <CardContent className="p-6">
@@ -88,7 +88,7 @@ export default function QAPage() {
                      <Link href="/imagine">
                         <div className="flex flex-col items-start w-full">
                             <ImageIcon className="w-5 h-5 mb-2 text-primary" />
-                            <span className="font-semibold">చిత్రాన్ని సృష్టించండి</span>
+                            <span className="font-semibold">చిత్రాన్ని గీయండి</span>
                         </div>
                     </Link>
                 </Button>
