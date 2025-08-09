@@ -122,7 +122,7 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
       </div>
       <Alert className="py-2 bg-transparent border-0 px-0">
         <AlertDescription className="text-xs text-muted-foreground text-center">
-            Study Buddy can make mistakes. Please double-check the information.
+            Telugu Thodu can make mistakes. Please double-check the information.
         </AlertDescription>
       </Alert>
     </div>

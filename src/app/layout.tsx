@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Study Buddy",
+  title: "Telugu Thodu",
   description: "Your friendly AI-powered study partner.",
 };
 
