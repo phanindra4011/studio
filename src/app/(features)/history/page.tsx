@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -64,7 +65,7 @@ export default function HistoryPage() {
 
     return (
         <main className="p-4 md:p-8 overflow-y-auto h-[calc(100svh-3.5rem)]">
-            <div className="max-w-6xl mx-auto grid gap-8">
+            <div className="max-w-6xl mx-auto grid gap-8 animate-fade-in-up">
                 <Card>
                     <CardHeader>
                         <CardTitle>మీ వాడుక చరిత్ర</CardTitle>

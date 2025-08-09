@@ -60,7 +60,7 @@ export default function TranslatePage() {
 
   return (
     <main className="p-4 md:p-8 overflow-y-auto h-[calc(100svh-3.5rem)]">
-      <div className="max-w-4xl mx-auto grid gap-8">
+      <div className="max-w-4xl mx-auto grid gap-8 animate-fade-in-up">
         <Card>
           <CardHeader>
             <CardTitle>అనువాదం</CardTitle>
@@ -131,7 +131,7 @@ export default function TranslatePage() {
         </Card>
 
         {(isLoading || translatedText) && (
-          <Card>
+          <Card className="animate-fade-in-up">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Languages className="text-primary" />

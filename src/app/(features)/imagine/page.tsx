@@ -58,7 +58,7 @@ export default function ImaginePage() {
 
   return (
     <main className="p-4 md:p-8 overflow-y-auto h-[calc(100svh-3.5rem)]">
-      <div className="max-w-2xl mx-auto grid gap-8">
+      <div className="max-w-2xl mx-auto grid gap-8 animate-fade-in-up">
         <Card>
           <CardHeader>
             <CardTitle>చిత్రాన్ని ఊహించుకోండి</CardTitle>
@@ -98,7 +98,7 @@ export default function ImaginePage() {
         </Card>
 
         {(isLoading || imageUrl) && (
-          <Card>
+          <Card className="animate-fade-in-up">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <ImageIcon className="text-primary" />

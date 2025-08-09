@@ -40,7 +40,7 @@ export default function ChatMessage({ message }: ChatMessageProps) {
   const isAssistant = message.role === 'assistant';
 
   return (
-    <div className={cn('flex items-start gap-4', isAssistant ? 'justify-start' : 'justify-end')}>
+    <div className={cn('flex items-start gap-4 animate-fade-in-up', isAssistant ? 'justify-start' : 'justify-end')}>
       {isAssistant && (
         <Avatar className="h-9 w-9 border-2 border-primary/50">
            <AvatarImage src="/vidyarthi-logo.png" alt="Vidyarthi AI" />

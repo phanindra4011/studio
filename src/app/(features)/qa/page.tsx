@@ -65,7 +65,7 @@ export default function QAPage() {
   };
   
   const welcomeScreen = (
-    <div className="flex flex-col items-center justify-center h-full text-center p-8">
+    <div className="flex flex-col items-center justify-center h-full text-center p-8 animate-fade-in-up">
       <div className="bg-primary/10 p-4 rounded-full mb-4">
         <Bot className="w-12 h-12 text-primary" />
       </div>
@@ -76,7 +76,7 @@ export default function QAPage() {
       <Card className="max-w-2xl w-full">
         <CardContent className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Button variant="outline" size="lg" className="h-auto py-4" asChild>
+                <Button variant="outline" size="lg" className="h-auto py-4 transition-transform transform hover:scale-105" asChild>
                     <Link href="/qa">
                         <div className="flex flex-col items-start w-full">
                             <BotMessageSquare className="w-5 h-5 mb-2 text-primary" />
@@ -84,7 +84,7 @@ export default function QAPage() {
                         </div>
                     </Link>
                 </Button>
-                <Button variant="outline" size="lg" className="h-auto py-4" asChild>
+                <Button variant="outline" size="lg" className="h-auto py-4 transition-transform transform hover:scale-105" asChild>
                      <Link href="/imagine">
                         <div className="flex flex-col items-start w-full">
                             <ImageIcon className="w-5 h-5 mb-2 text-primary" />
