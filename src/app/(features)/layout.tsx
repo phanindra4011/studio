@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import React, { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -61,71 +62,76 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <SidebarMenuItem>
                 <Link href="/qa">
                   <SidebarMenuButton size="lg" isActive={pathname === "/qa"} tooltip="చాట్">
-                    <>
+                    <React.Fragment>
                       <BotMessageSquare />
                       <span>చాట్</span>
-                    </>
+                    </React.Fragment>
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <Link href="/summarize">
                   <SidebarMenuButton size="lg" isActive={pathname === "/summarize"} tooltip="సంగ్రహం">
-                    <>
+                    <React.Fragment>
                       <BookText />
                       <span>సంగ్రహం</span>
-                    </>
+                    </React.Fragment>
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <Link href="/imagine">
                   <SidebarMenuButton size="lg" isActive={pathname === "/imagine"} tooltip="చిత్రం">
-                    <>
+                    <React.Fragment>
                       <ImageIcon />
                       <span>చిత్రం</span>
-                    </>
+                    </React.Fragment>
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
              <SidebarMenuItem>
                 <Link href="/translate">
                     <SidebarMenuButton size="lg" isActive={pathname === "/translate"} tooltip="అనువాదం">
-                        <>
+                        <React.Fragment>
                             <Languages />
                             <span>అనువాదం</span>
-                        </>
+                        </React.Fragment>
                     </SidebarMenuButton>
                  </Link>
              </SidebarMenuItem>
              <SidebarMenuItem>
                 <Link href="/history">
                   <SidebarMenuButton size="lg" isActive={pathname === "/history"} tooltip="చరిత్ర">
-                    <>
+                    <React.Fragment>
                       <History />
                       <span>చరిత్ర</span>
-                    </>
+                    </React.Fragment>
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
             </>}
           </SidebarMenu>
-          <SidebarFooter className="p-2 mt-auto">
-             <SidebarMenu>
-                {isClient && <SidebarMenuItem>
-                    <Link href="#">
-                        <SidebarMenuButton size="lg" isActive={pathname === "/profile"} tooltip="ప్రొఫైల్">
-                            <>
-                                <Avatar className="size-8">
-                                    <AvatarImage src="https://placehold.co/100x100.png" alt="User Avatar" />
-                                    <AvatarFallback>N</AvatarFallback>
-                                </Avatar>
-                                <span>ప్రొఫైల్</span>
-                            </>
-                        </SidebarMenuButton>
-                    </Link>
-                </SidebarMenuItem>}
-             </SidebarMenu>
+          <SidebarFooter className="p-2 mt-auto flex items-center justify-between">
+            <div className="flex-grow">
+                 <SidebarMenu>
+                    {isClient && <SidebarMenuItem>
+                        <Link href="#">
+                            <SidebarMenuButton size="lg" isActive={pathname === "/profile"} tooltip="ప్రొఫైల్">
+                                <React.Fragment>
+                                    <Avatar className="size-8">
+                                        <AvatarImage src="https://placehold.co/100x100.png" alt="User Avatar" />
+                                        <AvatarFallback>N</AvatarFallback>
+                                    </Avatar>
+                                    <span>ప్రొఫైల్</span>
+                                </React.Fragment>
+                            </SidebarMenuButton>
+                        </Link>
+                    </SidebarMenuItem>}
+                 </SidebarMenu>
+            </div>
+            <div className="group-data-[collapsible=icon]:hidden">
+                <ThemeToggle />
+            </div>
           </SidebarFooter>
         </SidebarContent>
       </Sidebar>
@@ -137,7 +143,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                     {getPageTitle()}
                 </h2>
             </div>
-             <div className="w-7 h-7" />
+             <div className="md:hidden">
+                <ThemeToggle />
+             </div>
+             <div className="w-7 h-7 hidden md:block" />
         </header>
         {children}
       </SidebarInset>
