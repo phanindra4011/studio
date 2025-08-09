@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -14,7 +15,7 @@ import { Loader2, Languages, ArrowRightLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const translateSchema = z.object({
-  text: z.string().min(2, 'Please enter at least 2 characters to translate.'),
+  text: z.string().min(2, 'Please enter at least 2 characters to translate.').max(3000, "Text must be 3000 characters or less."),
   targetLanguage: z.string({ required_error: 'Please select a language.' }),
 });
 

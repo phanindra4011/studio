@@ -51,12 +51,12 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
     const words = text.split(/\s+/).filter(Boolean);
-    if (words.length <= 300) {
+    if (words.length <= 3000) {
       setInput(text);
     } else {
         toast({
             title: "Word limit reached",
-            description: "Input is limited to 300 words.",
+            description: "Input is limited to 3000 words.",
         })
     }
   };

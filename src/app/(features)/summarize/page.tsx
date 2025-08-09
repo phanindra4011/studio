@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -10,13 +10,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
 import { summarizeContentAction } from '@/lib/actions';
-import { Loader2, BookText } from 'lucide-react';
+import { Loader2, BookText, Upload } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const summarizeSchema = z.object({
-  textbookContent: z.string().min(50, 'Please enter at least 50 characters to summarize.'),
+  textbookContent: z.string().min(50, 'Please enter at least 50 characters to summarize.').max(3000, 'Content must be 3000 characters or less.'),
   gradeLevel: z.string({ required_error: 'Please select a grade.' }),
+  file: z.any().optional(),
 });
 
 type FormValues = z.infer<typeof summarizeSchema>;
@@ -25,6 +27,7 @@ export default function SummarizePage() {
   const [summary, setSummary] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(summarizeSchema),
@@ -33,6 +36,48 @@ export default function SummarizePage() {
       gradeLevel: '5',
     },
   });
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      if (file.size > 1024 * 1024) { // 1MB limit
+        toast({
+          variant: 'destructive',
+          title: 'File too large',
+          description: 'Please upload a file smaller than 1MB.',
+        });
+        return;
+      }
+      if (file.type !== 'text/plain') {
+        toast({
+          variant: 'destructive',
+          title: 'Invalid file type',
+          description: 'Please upload a plain text (.txt) file.',
+        });
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = e.target?.result as string;
+        form.setValue('textbookContent', text.slice(0, 3000));
+        if (text.length > 3000) {
+            toast({
+                title: "Content truncated",
+                description: "The document content was truncated to 3000 characters."
+            });
+        }
+      };
+      reader.onerror = () => {
+        toast({
+            variant: 'destructive',
+            title: 'File Read Error',
+            description: 'Could not read the selected file.',
+        });
+      };
+      reader.readAsText(file);
+    }
+  };
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setIsLoading(true);
@@ -62,7 +107,7 @@ export default function SummarizePage() {
           <CardHeader>
             <CardTitle>Content Summarization</CardTitle>
             <CardDescription>
-              Paste a long passage from your textbook, and I'll summarize it into key points suitable for your grade level.
+              Paste a long passage from your textbook, or upload a .txt file. I'll summarize it into key points suitable for your grade level.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -76,11 +121,37 @@ export default function SummarizePage() {
                       <FormLabel>Textbook Content</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Paste the textbook content here..."
+                          placeholder="Paste the textbook content here, or upload a file below..."
                           className="min-h-[200px] resize-y"
                           {...field}
                         />
                       </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                 <FormField
+                  control={form.control}
+                  name="file"
+                  render={() => (
+                    <FormItem>
+                      <FormLabel>Upload Document</FormLabel>
+                       <FormControl>
+                            <div className="relative">
+                                <Input
+                                    type="file"
+                                    accept=".txt"
+                                    ref={fileInputRef}
+                                    onChange={handleFileChange}
+                                    className="block w-full text-sm text-slate-500
+                                    file:mr-4 file:py-2 file:px-4
+                                    file:rounded-full file:border-0
+                                    file:text-sm file:font-semibold
+                                    file:bg-primary/10 file:text-primary
+                                    hover:file:bg-primary/20"
+                                />
+                            </div>
+                        </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
