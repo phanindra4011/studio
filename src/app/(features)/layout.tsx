@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Bot, BotMessageSquare, ImageIcon, BookText, History, Mic, Languages } from "lucide-react";
@@ -16,10 +17,15 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const getPageTitle = () => {
     switch (pathname) {
@@ -51,72 +57,74 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             </Link>
           </SidebarHeader>
           <SidebarMenu className="px-2">
-            <SidebarMenuItem>
+            {isClient && <>
+                <SidebarMenuItem>
                 <Link href="/qa">
                   <SidebarMenuButton size="lg" isActive={pathname === "/qa"} tooltip="Chat">
-                    <React.Fragment>
+                    
                       <BotMessageSquare />
                       <span>Chat</span>
-                    </React.Fragment>
+                    
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <Link href="/summarize">
                   <SidebarMenuButton size="lg" isActive={pathname === "/summarize"} tooltip="Summarize">
-                    <React.Fragment>
+                    
                       <BookText />
                       <span>Summarize</span>
-                    </React.Fragment>
+                    
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <Link href="/imagine">
                   <SidebarMenuButton size="lg" isActive={pathname === "/imagine"} tooltip="Imagine">
-                    <React.Fragment>
+                    
                       <ImageIcon />
                       <span>Imagine</span>
-                    </React.Fragment>
+                    
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
              <SidebarMenuItem>
                 <Link href="/translate">
                     <SidebarMenuButton size="lg" isActive={pathname === "/translate"} tooltip="Translate">
-                        <React.Fragment>
+                        
                             <Languages />
                             <span>Translate</span>
-                        </React.Fragment>
+                        
                     </SidebarMenuButton>
                  </Link>
              </SidebarMenuItem>
              <SidebarMenuItem>
                 <Link href="/history">
                   <SidebarMenuButton size="lg" isActive={pathname === "/history"} tooltip="History">
-                    <React.Fragment>
+                    
                       <History />
                       <span>History</span>
-                    </React.Fragment>
+                    
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
+            </>}
           </SidebarMenu>
           <SidebarFooter className="p-2 mt-auto">
              <SidebarMenu>
-                <SidebarMenuItem>
+                {isClient && <SidebarMenuItem>
                     <Link href="#">
                         <SidebarMenuButton size="lg" isActive={pathname === "/profile"} tooltip="Profile">
-                            <React.Fragment>
+                            
                                 <Avatar className="size-8">
                                     <AvatarImage src="https://placehold.co/100x100.png" alt="User Avatar" />
                                     <AvatarFallback>N</AvatarFallback>
                                 </Avatar>
                                 <span>Profile</span>
-                            </React.Fragment>
+                            
                         </SidebarMenuButton>
                     </Link>
-                </SidebarMenuItem>
+                </SidebarMenuItem>}
              </SidebarMenu>
           </SidebarFooter>
         </SidebarContent>
