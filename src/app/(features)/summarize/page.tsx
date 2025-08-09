@@ -30,6 +30,7 @@ export default function SummarizePage() {
     resolver: zodResolver(summarizeSchema),
     defaultValues: {
       textbookContent: '',
+      gradeLevel: '5',
     },
   });
 

@@ -7,7 +7,10 @@ import ChatInput from '@/components/chat/ChatInput';
 import type { Message } from '@/lib/types';
 import { getAnswerAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
-import { Sparkles } from 'lucide-react';
+import { Bot, ImageIcon, BotMessageSquare } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 let messageIdCounter = 0;
 const generateId = () => {
@@ -19,6 +22,7 @@ export default function QAPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const [activeSuggestion, setActiveSuggestion] = useState<'question' | 'image' | null>(null);
 
   const handleSubmit = async (input: string, grade: string, emotion: string) => {
     if (!input.trim()) return;
@@ -63,12 +67,34 @@ export default function QAPage() {
   const welcomeScreen = (
     <div className="flex flex-col items-center justify-center h-full text-center p-8">
       <div className="bg-primary/10 p-4 rounded-full mb-4">
-        <Sparkles className="w-12 h-12 text-primary" />
+        <Bot className="w-12 h-12 text-primary" />
       </div>
-      <h2 className="text-3xl font-bold font-headline mb-2">Welcome to Vidyarthi AI!</h2>
-      <p className="text-muted-foreground max-w-md">
-        Your personal AI tutor for Telangana textbooks. Select your grade, share how you're feeling, and ask me anything about your lessons!
+      <h2 className="text-3xl font-bold font-headline mb-2">Hello! I'm Study Buddy</h2>
+      <p className="text-muted-foreground max-w-md mb-8">
+        Your friendly AI-powered study partner. How can I help you today?
       </p>
+      <Card className="max-w-2xl w-full">
+        <CardContent className="p-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Button variant="outline" size="lg" className="h-auto py-4" asChild>
+                    <Link href="/qa">
+                        <div className="flex flex-col items-start w-full">
+                            <BotMessageSquare className="w-5 h-5 mb-2 text-primary" />
+                            <span className="font-semibold">Ask a Question</span>
+                        </div>
+                    </Link>
+                </Button>
+                <Button variant="outline" size="lg" className="h-auto py-4" asChild>
+                     <Link href="/imagine">
+                        <div className="flex flex-col items-start w-full">
+                            <ImageIcon className="w-5 h-5 mb-2 text-primary" />
+                            <span className="font-semibold">Create an Image</span>
+                        </div>
+                    </Link>
+                </Button>
+            </div>
+        </CardContent>
+      </Card>
     </div>
   );
 

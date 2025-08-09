@@ -9,21 +9,12 @@ import { Mic, Send, Loader2, Square, AlertTriangle } from 'lucide-react';
 import { useRecorder } from '@/hooks/use-recorder';
 import { speechToTextAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
-import { Badge } from '../ui/badge';
 import { Alert, AlertDescription } from '../ui/alert';
 
 interface ChatInputProps {
   onSubmit: (input: string, grade: string, emotion: string) => void;
   isLoading: boolean;
 }
-
-const SUGGESTIONS = [
-    "Explain the water cycle.",
-    "Summarize the story of 'The Clever Crow'.",
-    "What is photosynthesis?",
-    "Who was the first Prime Minister of India?",
-    "Explain the concept of gravity.",
-];
 
 export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
   const [input, setInput] = useState('');
@@ -84,11 +75,6 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
     }
   };
 
-  const handleSuggestionClick = (suggestion: string) => {
-    setInput(suggestion);
-    textareaRef.current?.focus();
-  }
-
   useEffect(() => {
     if (textareaRef.current) {
         textareaRef.current.style.height = 'auto';
@@ -98,45 +84,13 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap items-center gap-2">
-        {SUGGESTIONS.map((s, i) => (
-            <Badge key={i} variant="outline" className="cursor-pointer hover:bg-primary/10" onClick={() => handleSuggestionClick(s)}>{s}</Badge>
-        ))}
-      </div>
       <div className="relative flex w-full items-end gap-2 rounded-lg border bg-card p-2 shadow-sm">
-        <div className="flex gap-1.5">
-          <Select value={grade} onValueChange={setGrade}>
-            <SelectTrigger className="w-28" aria-label="Select Grade">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {Array.from({ length: 10 }, (_, i) => i + 1).map((g) => (
-                <SelectItem key={g} value={String(g)}>
-                  Grade {g}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
-          <Select value={emotion} onValueChange={setEmotion}>
-            <SelectTrigger className="w-32" aria-label="Select Emotion">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="Curious">Curious</SelectItem>
-              <SelectItem value="Confused">Confused</SelectItem>
-              <SelectItem value="Happy">Happy</SelectItem>
-              <SelectItem value="Frustrated">Frustrated</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        
         <Textarea
           ref={textareaRef}
           value={input}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          placeholder="Ask a question or describe a topic..."
+          placeholder="Ask anything..."
           className="flex-1 resize-none border-0 shadow-none focus-visible:ring-0 max-h-48 bg-transparent"
           rows={1}
         />
@@ -166,10 +120,9 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
           </Button>
         </div>
       </div>
-      <Alert className="py-2 bg-transparent border-0">
-        <AlertTriangle className="h-4 w-4" />
-        <AlertDescription className="text-xs text-muted-foreground">
-            AI-generated content can have mistakes. Please verify important information.
+      <Alert className="py-2 bg-transparent border-0 px-0">
+        <AlertDescription className="text-xs text-muted-foreground text-center">
+            Study Buddy can make mistakes. Please double-check the information.
         </AlertDescription>
       </Alert>
     </div>
