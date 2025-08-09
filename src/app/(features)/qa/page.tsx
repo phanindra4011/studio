@@ -69,7 +69,7 @@ export default function QAPage() {
       <div className="bg-primary/10 p-4 rounded-full mb-4">
         <Bot className="w-12 h-12 text-primary" />
       </div>
-      <h2 className="text-3xl font-bold font-headline mb-2">నమస్కారం! నేను మీ తెలుగు తోడు</h2>
+      <h2 className="text-3xl font-bold font-headline mb-2">నమస్కారం! నేను మీ Vidyarthi AI</h2>
       <p className="text-muted-foreground max-w-md mb-8">
         మీ చదువులో సహాయం చేసే AI స్నేహితుడిని. ఈ రోజు నేను మీకు ఎలా సహాయపడగలను?
       </p>

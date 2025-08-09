@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Telugu Thodu",
+  title: "Vidyarthi AI",
   description: "Your friendly AI-powered study partner.",
 };
 
