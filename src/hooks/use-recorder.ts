@@ -35,8 +35,8 @@ export const useRecorder = ({ onStop }: { onStop: (blob: Blob) => void }) => {
             console.error("Error starting recording:", err);
             toast({
                 variant: "destructive",
-                title: "Recording Error",
-                description: "Could not start recording. Please ensure microphone permissions are granted.",
+                title: "రికార్డింగ్ లోపం",
+                description: "రికార్డింగ్ ప్రారంభించడం సాధ్యపడలేదు. దయచేసి మైక్రోఫోన్ అనుమతులు మంజూరు చేయబడిందని నిర్ధారించుకోండి.",
             })
         }
     }, [isRecording, onStop, toast]);

@@ -15,8 +15,8 @@ import { Loader2, Languages, ArrowRightLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const translateSchema = z.object({
-  text: z.string().min(2, 'Please enter at least 2 characters to translate.').max(3000, "Text must be 3000 characters or less."),
-  targetLanguage: z.string({ required_error: 'Please select a language.' }),
+  text: z.string().min(2, 'అనువదించడానికి దయచేసి కనీసం 2 అక్షరాలను నమోదు చేయండి.').max(3000, "టెక్స్ట్ తప్పనిసరిగా 3000 అక్షరాలు లేదా అంతకంటే తక్కువగా ఉండాలి."),
+  targetLanguage: z.string({ required_error: 'దయచేసి భాషను ఎంచుకోండి.' }),
 });
 
 type FormValues = z.infer<typeof translateSchema>;
@@ -50,8 +50,8 @@ export default function TranslatePage() {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'Translation Failed',
-        description: (error as Error).message || 'Could not translate the text. Please try again.',
+        title: 'అనువాదం విఫలమైంది',
+        description: (error as Error).message || 'టెక్స్ట్‌ని అనువదించడం సాధ్యపడలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి.',
       });
     } finally {
       setIsLoading(false);
@@ -63,9 +63,9 @@ export default function TranslatePage() {
       <div className="max-w-4xl mx-auto grid gap-8">
         <Card>
           <CardHeader>
-            <CardTitle>Translate Text</CardTitle>
+            <CardTitle>టెక్స్ట్‌ని అనువదించండి</CardTitle>
             <CardDescription>
-              Enter some text and choose a language to translate it into.
+              కొంత టెక్స్ట్‌ని నమోదు చేసి, దానిని అనువదించడానికి భాషను ఎంచుకోండి.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -76,10 +76,10 @@ export default function TranslatePage() {
                   name="text"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Text to Translate</FormLabel>
+                      <FormLabel>అనువదించాల్సిన టెక్స్ట్</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Enter the text you want to translate..."
+                          placeholder="మీరు అనువదించాలనుకుంటున్న టెక్స్ట్‌ని నమోదు చేయండి..."
                           className="min-h-[150px] resize-y"
                           {...field}
                         />
@@ -93,11 +93,11 @@ export default function TranslatePage() {
                   name="targetLanguage"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Target Language</FormLabel>
+                      <FormLabel>లక్ష్య భాష</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a language" />
+                            <SelectValue placeholder="భాషను ఎంచుకోండి" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -116,12 +116,12 @@ export default function TranslatePage() {
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Translating...
+                      అనువదిస్తున్నాము...
                     </>
                   ) : (
                     <>
                      <ArrowRightLeft className="mr-2"/>
-                      Translate
+                      అనువదించు
                     </>
                   )}
                 </Button>
@@ -135,7 +135,7 @@ export default function TranslatePage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Languages className="text-primary" />
-                Translated Text
+                అనువదించబడిన టెక్స్ట్
               </CardTitle>
             </CardHeader>
             <CardContent>

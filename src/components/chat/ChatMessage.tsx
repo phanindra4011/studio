@@ -30,8 +30,8 @@ export default function ChatMessage({ message }: ChatMessageProps) {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'Text-to-Speech Failed',
-        description: 'Could not play the audio. Please try again.',
+        title: 'టెక్స్ట్-టు-స్పీచ్ విఫలమైంది',
+        description: 'ఆడియోను ప్లే చేయడం సాధ్యపడలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి.',
       });
       setIsSpeaking(false);
     }
@@ -74,7 +74,7 @@ export default function ChatMessage({ message }: ChatMessageProps) {
             ) : (
               <Volume2 className="h-4 w-4" />
             )}
-            <span className="ml-1.5 text-xs">Listen</span>
+            <span className="ml-1.5 text-xs">వినండి</span>
           </Button>
         )}
       </div>

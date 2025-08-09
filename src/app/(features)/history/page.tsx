@@ -10,19 +10,19 @@ import { ChartConfig, ChartContainer, ChartTooltipContent } from '@/components/u
 
 const chartConfig = {
     qa: {
-      label: 'Q&A',
+      label: 'ప్రశ్న & జవాబు',
       color: 'hsl(var(--chart-1))',
     },
     summarize: {
-      label: 'Summarize',
+      label: 'సంగ్రహించు',
       color: 'hsl(var(--chart-2))',
     },
     imagine: {
-      label: 'Imagine',
+      label: 'ఊహించు',
       color: 'hsl(var(--chart-3))',
     },
     translate: {
-      label: 'Translate',
+      label: 'అనువదించు',
       color: 'hsl(var(--chart-4))',
     },
 } satisfies ChartConfig;
@@ -57,7 +57,7 @@ export default function HistoryPage() {
     if (!historyData) {
         return (
             <div className="flex items-center justify-center h-[calc(100svh-3.5rem)]">
-                <p>Could not load usage history.</p>
+                <p>వినియోగ చరిత్రను లోడ్ చేయడం సాధ్యపడలేదు.</p>
             </div>
         );
     }
@@ -67,9 +67,9 @@ export default function HistoryPage() {
             <div className="max-w-6xl mx-auto grid gap-8">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Usage History</CardTitle>
+                        <CardTitle>వినియోగ చరిత్ర</CardTitle>
                         <CardDescription>
-                            Here is a summary of your activity for the past week.
+                            గత వారం మీ కార్యకలాపాల సారాంశం ఇక్కడ ఉంది.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -94,7 +94,7 @@ export default function HistoryPage() {
                                     <Bar dataKey="summarize" stackId="a" fill="var(--color-summarize)" radius={[4, 4, 0, 0]} />
                                     <Bar dataKey="imagine" stackId="a" fill="var(--color-imagine)" radius={[4, 4, 0, 0]} />
                                     <Bar dataKey="translate" stackId="a" fill="var(--color-translate)" radius={[4, 4, 0, 0]} />
-                                </BarChart>
+                                 </BarChart>
                             </ResponsiveContainer>
                         </ChartContainer>
                     </CardContent>

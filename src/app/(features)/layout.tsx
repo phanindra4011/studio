@@ -30,17 +30,17 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const getPageTitle = () => {
     switch (pathname) {
       case '/qa':
-        return 'Chat';
+        return 'చాట్';
       case '/summarize':
-        return 'Summarize';
+        return 'సంగ్రహించు';
       case '/imagine':
-        return 'Imagine';
+        return 'ఊహించు';
       case '/history':
-        return 'History';
+        return 'చరిత్ర';
       case '/translate':
-          return 'Translate';
+          return 'అనువదించు';
       default:
-        return 'Telugu Thodu';
+        return 'తెలుగు తోడు';
     }
   }
 
@@ -52,7 +52,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <Link href="/qa" className="flex items-center gap-3">
                 <Bot className="w-8 h-8 text-primary" />
                 <div className="flex flex-col group-data-[collapsible=icon]:hidden">
-                  <h1 className="text-xl font-bold font-headline">Telugu Thodu</h1>
+                  <h1 className="text-xl font-bold font-headline">తెలుగు తోడు</h1>
                 </div>
             </Link>
           </SidebarHeader>
@@ -60,51 +60,51 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             {isClient && <>
                 <SidebarMenuItem>
                 <Link href="/qa">
-                  <SidebarMenuButton size="lg" isActive={pathname === "/qa"} tooltip="Chat">
-                    
+                  <SidebarMenuButton size="lg" isActive={pathname === "/qa"} tooltip="చాట్">
+                    <>
                       <BotMessageSquare />
-                      <span>Chat</span>
-                    
+                      <span>చాట్</span>
+                    </>
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <Link href="/summarize">
-                  <SidebarMenuButton size="lg" isActive={pathname === "/summarize"} tooltip="Summarize">
-                    
+                  <SidebarMenuButton size="lg" isActive={pathname === "/summarize"} tooltip="సంగ్రహించు">
+                    <>
                       <BookText />
-                      <span>Summarize</span>
-                    
+                      <span>సంగ్రహించు</span>
+                    </>
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <Link href="/imagine">
-                  <SidebarMenuButton size="lg" isActive={pathname === "/imagine"} tooltip="Imagine">
-                    
+                  <SidebarMenuButton size="lg" isActive={pathname === "/imagine"} tooltip="ఊహించు">
+                    <>
                       <ImageIcon />
-                      <span>Imagine</span>
-                    
+                      <span>ఊహించు</span>
+                    </>
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
              <SidebarMenuItem>
                 <Link href="/translate">
-                    <SidebarMenuButton size="lg" isActive={pathname === "/translate"} tooltip="Translate">
-                        
+                    <SidebarMenuButton size="lg" isActive={pathname === "/translate"} tooltip="అనువదించు">
+                        <>
                             <Languages />
-                            <span>Translate</span>
-                        
+                            <span>అనువదించు</span>
+                        </>
                     </SidebarMenuButton>
                  </Link>
              </SidebarMenuItem>
              <SidebarMenuItem>
                 <Link href="/history">
-                  <SidebarMenuButton size="lg" isActive={pathname === "/history"} tooltip="History">
-                    
+                  <SidebarMenuButton size="lg" isActive={pathname === "/history"} tooltip="చరిత్ర">
+                    <>
                       <History />
-                      <span>History</span>
-                    
+                      <span>చరిత్ర</span>
+                    </>
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
@@ -114,14 +114,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
              <SidebarMenu>
                 {isClient && <SidebarMenuItem>
                     <Link href="#">
-                        <SidebarMenuButton size="lg" isActive={pathname === "/profile"} tooltip="Profile">
-                            
+                        <SidebarMenuButton size="lg" isActive={pathname === "/profile"} tooltip="ప్రొఫైల్">
+                            <>
                                 <Avatar className="size-8">
                                     <AvatarImage src="https://placehold.co/100x100.png" alt="User Avatar" />
                                     <AvatarFallback>N</AvatarFallback>
                                 </Avatar>
-                                <span>Profile</span>
-                            
+                                <span>ప్రొఫైల్</span>
+                            </>
                         </SidebarMenuButton>
                     </Link>
                 </SidebarMenuItem>}

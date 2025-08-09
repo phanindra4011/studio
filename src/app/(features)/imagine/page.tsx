@@ -16,7 +16,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const imagineSchema = z.object({
-  textbookDescription: z.string().min(10, 'Please enter at least 10 characters for the description.'),
+  textbookDescription: z.string().min(10, 'వివరణ కోసం దయచేసి కనీసం 10 అక్షరాలను నమోదు చేయండి.'),
 });
 
 type FormValues = z.infer<typeof imagineSchema>;
@@ -38,18 +38,18 @@ export default function ImaginePage() {
     setImageUrl('');
     try {
       const result = await generateImageAction({
-        textbookDescription: `An educational illustration for a school textbook, simple and clear style: ${data.textbookDescription}`,
+        textbookDescription: `పాఠశాల పాఠ్యపుస్తకం కోసం ఒక విద్యాపరమైన ఉదాహరణ, సరళమైన మరియు స్పష్టమైన శైలి: ${data.textbookDescription}`,
       });
       if (!result.imageUrl) {
-        throw new Error('The AI did not return an image. Please try a different description.');
+        throw new Error('AI చిత్రం తిరిగి ఇవ్వలేదు. దయచేసి వేరే వివరణను ప్రయత్నించండి.');
       }
       setImageUrl(result.imageUrl);
     } catch (error) {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'Image Generation Failed',
-        description: (error as Error).message || 'Could not generate the image. Please try again.',
+        title: 'చిత్రం జనరేషన్ విఫలమైంది',
+        description: (error as Error).message || 'చిత్రాన్ని రూపొందించడం సాధ్యపడలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి.',
       });
     } finally {
       setIsLoading(false);
@@ -61,9 +61,9 @@ export default function ImaginePage() {
       <div className="max-w-2xl mx-auto grid gap-8">
         <Card>
           <CardHeader>
-            <CardTitle>Image Generation</CardTitle>
+            <CardTitle>చిత్రం జనరేషన్</CardTitle>
             <CardDescription>
-              Describe a scene or concept from your textbook, and I'll generate an image to help you visualize it.
+              మీ పాఠ్యపుస్తకం నుండి ఒక దృశ్యం లేదా భావనను వివరించండి, మరియు నేను దానిని ఊహించుకోవడంలో మీకు సహాయపడటానికి ఒక చిత్రాన్ని రూపొందిస్తాను.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -74,9 +74,9 @@ export default function ImaginePage() {
                   name="textbookDescription"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Description</FormLabel>
+                      <FormLabel>వివరణ</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., A diagram of photosynthesis" {...field} />
+                        <Input placeholder="ఉదా., కిరణజన్య సంయోగక్రియ యొక్క రేఖాచిత్రం" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -86,10 +86,10 @@ export default function ImaginePage() {
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Generating...
+                      రూపొందిస్తున్నాము...
                     </>
                   ) : (
-                    'Generate Image'
+                    'చిత్రాన్ని రూపొందించండి'
                   )}
                 </Button>
               </form>
@@ -102,7 +102,7 @@ export default function ImaginePage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <ImageIcon className="text-primary" />
-                Generated Image
+                రూపొందించబడిన చిత్రం
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -126,9 +126,9 @@ export default function ImaginePage() {
         )}
         <Alert>
             <AlertTriangle className="h-4 w-4" />
-            <AlertTitle>Disclaimer</AlertTitle>
+            <AlertTitle>నిరాకరణ</AlertTitle>
             <AlertDescription>
-                AI can make mistakes. Please double-check the generated content for accuracy.
+                AI తప్పులు చేయగలదు. దయచేసి రూపొందించబడిన కంటెంట్ యొక్క ఖచ్చితత్వాన్ని రెండుసార్లు తనిఖీ చేయండి.
             </AlertDescription>
         </Alert>
       </div>

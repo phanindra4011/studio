@@ -61,7 +61,7 @@ const summarizeTextbookContentFlow = ai.defineFlow(
     const {output} = await summarizeTextbookContentPrompt(input);
     return {
       ...output!,
-      progress: 'Textbook content was summarized into key points suitable for the student.',
+      progress: 'పాఠ్యపుస్తకంలోని కంటెంట్ విద్యార్థికి అనువైన కీలక అంశాలలో సంగ్రహించబడింది.',
     };
   }
 );

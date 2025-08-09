@@ -16,8 +16,8 @@ import { Loader2, BookText, Upload } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const summarizeSchema = z.object({
-  textbookContent: z.string().min(50, 'Please enter at least 50 characters to summarize.').max(3000, 'Content must be 3000 characters or less.'),
-  gradeLevel: z.string({ required_error: 'Please select a grade.' }),
+  textbookContent: z.string().min(50, 'సంగ్రహించడానికి దయచేసి కనీసం 50 అక్షరాలను నమోదు చేయండి.').max(3000, 'కంటెంట్ తప్పనిసరిగా 3000 అక్షరాలు లేదా అంతకంటే తక్కువగా ఉండాలి.'),
+  gradeLevel: z.string({ required_error: 'దయచేసి గ్రేడ్‌ను ఎంచుకోండి.' }),
   file: z.any().optional(),
 });
 
@@ -43,16 +43,16 @@ export default function SummarizePage() {
       if (file.size > 1024 * 1024) { // 1MB limit
         toast({
           variant: 'destructive',
-          title: 'File too large',
-          description: 'Please upload a file smaller than 1MB.',
+          title: 'ఫైల్ చాలా పెద్దది',
+          description: 'దయచేసి 1MB కంటే చిన్న ఫైల్‌ను అప్‌లోడ్ చేయండి.',
         });
         return;
       }
       if (file.type !== 'text/plain') {
         toast({
           variant: 'destructive',
-          title: 'Invalid file type',
-          description: 'Please upload a plain text (.txt) file.',
+          title: 'చెల్లని ఫైల్ రకం',
+          description: 'దయచేసి సాదా టెక్స్ట్ (.txt) ఫైల్‌ను అప్‌లోడ్ చేయండి.',
         });
         return;
       }
@@ -63,16 +63,16 @@ export default function SummarizePage() {
         form.setValue('textbookContent', text.slice(0, 3000));
         if (text.length > 3000) {
             toast({
-                title: "Content truncated",
-                description: "The document content was truncated to 3000 characters."
+                title: "కంటెంట్ కుదించబడింది",
+                description: "పత్రం కంటెంట్ 3000 అక్షరాలకు కుదించబడింది."
             });
         }
       };
       reader.onerror = () => {
         toast({
             variant: 'destructive',
-            title: 'File Read Error',
-            description: 'Could not read the selected file.',
+            title: 'ఫైల్ చదవడంలో లోపం',
+            description: 'ఎంచుకున్న ఫైల్‌ను చదవడం సాధ్యపడలేదు.',
         });
       };
       reader.readAsText(file);
@@ -92,8 +92,8 @@ export default function SummarizePage() {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'Summarization Failed',
-        description: (error as Error).message || 'Could not summarize the content. Please try again.',
+        title: 'సంగ్రహించడం విఫలమైంది',
+        description: (error as Error).message || 'కంటెంట్‌ను సంగ్రహించడం సాధ్యపడలేదు. దయచేసి మళ్ళీ ప్రయత్నించండి.',
       });
     } finally {
       setIsLoading(false);
@@ -105,9 +105,9 @@ export default function SummarizePage() {
       <div className="max-w-4xl mx-auto grid gap-8">
         <Card>
           <CardHeader>
-            <CardTitle>Content Summarization</CardTitle>
+            <CardTitle>కంటెంట్ సంగ్రహం</CardTitle>
             <CardDescription>
-              Paste a long passage from your textbook, or upload a .txt file. I'll summarize it into key points suitable for your grade level.
+              మీ పాఠ్యపుస్తకం నుండి ఒక పొడవైన భాగాన్ని అతికించండి లేదా .txt ఫైల్‌ను అప్‌లోడ్ చేయండి. నేను దానిని మీ గ్రేడ్ స్థాయికి తగిన కీలక అంశాలలో సంగ్రహిస్తాను.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -118,10 +118,10 @@ export default function SummarizePage() {
                   name="textbookContent"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Textbook Content</FormLabel>
+                      <FormLabel>పాఠ్యపుస్తకం కంటెంట్</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Paste the textbook content here, or upload a file below..."
+                          placeholder="పాఠ్యపుస్తకం కంటెంట్‌ను ఇక్కడ అతికించండి లేదా క్రింద ఒక ఫైల్‌ను అప్‌లోడ్ చేయండి..."
                           className="min-h-[200px] resize-y"
                           {...field}
                         />
@@ -135,7 +135,7 @@ export default function SummarizePage() {
                   name="file"
                   render={() => (
                     <FormItem>
-                      <FormLabel>Upload Document</FormLabel>
+                      <FormLabel>పత్రాన్ని అప్‌లోడ్ చేయండి</FormLabel>
                        <FormControl>
                             <div className="relative">
                                 <Input
@@ -161,17 +161,17 @@ export default function SummarizePage() {
                   name="gradeLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Grade Level</FormLabel>
+                      <FormLabel>గ్రేడ్ స్థాయి</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select your grade" />
+                            <SelectValue placeholder="మీ గ్రేడ్‌ను ఎంచుకోండి" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
                           {Array.from({ length: 10 }, (_, i) => i + 1).map((grade) => (
                             <SelectItem key={grade} value={String(grade)}>
-                              Grade {grade}
+                              గ్రేడ్ {grade}
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -184,10 +184,10 @@ export default function SummarizePage() {
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Summarizing...
+                      సంగ్రహిస్తున్నాము...
                     </>
                   ) : (
-                    'Summarize Content'
+                    'కంటెంట్‌ను సంగ్రహించండి'
                   )}
                 </Button>
               </form>
@@ -200,7 +200,7 @@ export default function SummarizePage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <BookText className="text-primary" />
-                Summary
+                సారాంశం
               </CardTitle>
             </CardHeader>
             <CardContent>

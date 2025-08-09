@@ -38,8 +38,8 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
       console.error(error);
       toast({
         variant: 'destructive',
-        title: 'Speech-to-Text Failed',
-        description: (error as Error).message || 'Could not process the audio.',
+        title: 'స్పీచ్-టు-టెక్స్ట్ విఫలమైంది',
+        description: (error as Error).message || 'ఆడియోను ప్రాసెస్ చేయడం సాధ్యపడలేదు.',
       });
     } finally {
       setIsRecordingLoading(false);
@@ -55,8 +55,8 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
       setInput(text);
     } else {
         toast({
-            title: "Word limit reached",
-            description: "Input is limited to 3000 words.",
+            title: "పద పరిమితికి చేరుకుంది",
+            description: "ఇన్‌పుట్ 3000 పదాలకు పరిమితం చేయబడింది.",
         })
     }
   };
@@ -90,7 +90,7 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
           value={input}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          placeholder="Ask anything..."
+          placeholder="ఏదైనా అడగండి..."
           className="flex-1 resize-none border-0 shadow-none focus-visible:ring-0 max-h-48 bg-transparent"
           rows={1}
         />
@@ -100,7 +100,7 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
             variant={isRecording ? 'destructive' : 'ghost'}
             onClick={toggleRecording}
             disabled={isRecordingLoading}
-            aria-label={isRecording ? "Stop recording" : "Start recording"}
+            aria-label={isRecording ? "రికార్డింగ్ ఆపండి" : "రికార్డింగ్ ప్రారంభించండి"}
           >
             {isRecordingLoading ? (
               <Loader2 className="h-5 w-5 animate-spin" />
@@ -114,7 +114,7 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
             size="icon"
             onClick={handleSend}
             disabled={isLoading || !input.trim()}
-            aria-label="Send message"
+            aria-label="సందేశం పంపండి"
           >
             {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
           </Button>
@@ -122,7 +122,7 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
       </div>
       <Alert className="py-2 bg-transparent border-0 px-0">
         <AlertDescription className="text-xs text-muted-foreground text-center">
-            Telugu Thodu can make mistakes. Please double-check the information.
+            తెలుగు తోడు తప్పులు చేయగలదు. దయచేసి సమాచారాన్ని రెండుసార్లు తనిఖీ చేయండి.
         </AlertDescription>
       </Alert>
     </div>
