@@ -51,7 +51,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <SidebarContent>
           <SidebarHeader className="p-4 justify-center">
             <Link href="/qa" className="flex items-center gap-3">
-                <Bot className="w-8 h-8 text-primary" />
+                <Avatar className="w-8 h-8">
+                  <AvatarImage src="/vidyarthi-logo.png" alt="తెలుగు తోడు" />
+                  <AvatarFallback><Bot /></AvatarFallback>
+                </Avatar>
                 <div className="flex flex-col group-data-[collapsible=icon]:hidden">
                   <h1 className="text-xl font-bold font-headline">తెలుగు తోడు</h1>
                 </div>
@@ -119,8 +122,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                             <SidebarMenuButton size="lg" isActive={pathname === "/profile"} tooltip="Profile">
                                 
                                     <Avatar className="size-8">
-                                        <AvatarImage src="https://placehold.co/100x100.png" alt="User Avatar" />
-                                        <AvatarFallback>N</AvatarFallback>
+                                        <AvatarImage src="/user-avatar.png" alt="User Avatar" />
+                                        <AvatarFallback>U</AvatarFallback>
                                     </Avatar>
                                     <span>Profile</span>
                                 

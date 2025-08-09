@@ -11,6 +11,7 @@ import { Bot, ImageIcon, BotMessageSquare } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 let messageIdCounter = 0;
 const generateId = () => {
@@ -67,7 +68,10 @@ export default function QAPage() {
   const welcomeScreen = (
     <div className="flex flex-col items-center justify-center h-full text-center p-8 animate-fade-in-up">
       <div className="bg-primary/10 p-4 rounded-full mb-4">
-        <Bot className="w-12 h-12 text-primary" />
+        <Avatar className="w-12 h-12">
+            <AvatarImage src="/vidyarthi-logo.png" alt="తెలుగు తోడు" />
+            <AvatarFallback><Bot className="w-12 h-12 text-primary" /></AvatarFallback>
+        </Avatar>
       </div>
       <h2 className="text-3xl font-bold font-headline mb-2">నమస్కారం! నేను మీ తెలుగు తోడు</h2>
       <p className="text-muted-foreground max-w-md mb-8">
