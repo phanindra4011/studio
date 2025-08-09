@@ -122,7 +122,7 @@ export default function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
       </div>
       <Alert className="py-2 bg-transparent border-0 px-0">
         <AlertDescription className="text-xs text-muted-foreground text-center">
-            Vidyarthi AI తప్పులు చేయగలదు. దయచేసి సమాచారాన్ని సరిచూసుకోండి.
+            తెలుగు తోడు AI తప్పులు చేయగలదు. దయచేసి సమాచారాన్ని సరిచూసుకోండి.
         </AlertDescription>
       </Alert>
     </div>

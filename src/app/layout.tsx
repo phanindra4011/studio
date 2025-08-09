@@ -5,8 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Telugu Thodu",
-  description: "Your friendly AI-powered study partner.",
+  title: "తెలుగు తోడు",
+  description: "మీ స్నేహపూర్వక AI-ఆధారిత స్టడీ పార్టనర్.",
 };
 
 export default function RootLayout({
