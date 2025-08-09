@@ -1,7 +1,7 @@
 
 "use client";
 
-import { BookText, BotMessageSquare, Image as ImageIcon, Sparkles } from "lucide-react";
+import { BookText, BotMessageSquare, Image as ImageIcon, Sparkles, History, Languages } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -27,6 +27,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         return 'Summarize Content';
       case '/imagine':
         return 'Imagine';
+      case '/translate':
+        return 'Translate';
+      case '/history':
+        return 'History';
       default:
         return 'Vidyarthi AI';
     }
@@ -67,6 +71,22 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <Link href="/imagine">
                   <ImageIcon />
                   <span>Imagine</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton size="lg" asChild isActive={pathname === "/translate"} tooltip="Translate">
+                <Link href="/translate">
+                  <Languages />
+                  <span>Translate</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton size="lg" asChild isActive={pathname === "/history"} tooltip="History">
+                <Link href="/history">
+                  <History />
+                  <span>History</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>

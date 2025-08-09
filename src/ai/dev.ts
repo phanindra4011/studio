@@ -7,3 +7,5 @@ import '@/ai/flows/answer-questions-from-textbook.ts';
 import '@/ai/flows/generate-image-from-textbook.ts';
 import '@/ai/flows/summarize-textbook-content.ts';
 import '@/ai/flows/convert-speech-to-text.ts';
+import '@/ai/flows/translate-text.ts';
+import '@/ai/flows/get-usage-history.ts';

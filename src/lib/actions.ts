@@ -7,6 +7,8 @@ import { summarizeTextbookContent } from '@/ai/flows/summarize-textbook-content'
 import { generateImageFromTextbook } from '@/ai/flows/generate-image-from-textbook';
 import { convertSpeechToText } from '@/ai/flows/convert-speech-to-text';
 import { convertTextToSpeech } from '@/ai/flows/convert-text-to-speech';
+import { translateText } from '@/ai/flows/translate-text';
+import { getUsageHistory } from '@/ai/flows/get-usage-history';
 
 const qaSchema = z.object({
   question: z.string().min(1, 'Question cannot be empty.'),
@@ -59,4 +61,18 @@ const textToSpeechSchema = z.object({
 export async function textToSpeechAction(input: z.infer<typeof textToSpeechSchema>) {
     const validatedInput = textToSpeechSchema.parse(input);
     return await convertTextToSpeech(validatedInput);
+}
+
+const translateSchema = z.object({
+    text: z.string().min(1, 'Text cannot be empty.'),
+    targetLanguage: z.string(),
+});
+
+export async function translateTextAction(input: z.infer<typeof translateSchema>) {
+    const validatedInput = translateSchema.parse(input);
+    return await translateText(validatedInput);
+}
+
+export async function getUsageHistoryAction() {
+    return await getUsageHistory();
 }
