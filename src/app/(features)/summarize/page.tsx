@@ -105,7 +105,7 @@ export default function SummarizePage() {
       <div className="max-w-4xl mx-auto grid gap-8 animate-fade-in-up">
         <Card>
           <CardHeader>
-            <CardTitle>టెక్స్ట్ సంగ్రహం</CardTitle>
+            <CardTitle>పాఠాన్ని సంగ్రహించండి</CardTitle>
             <CardDescription>
               మీ పాఠం నుండి టెక్స్ట్‌ను ఇక్కడ అతికించండి లేదా .txt ఫైల్‌ను అప్‌లోడ్ చేయండి. నేను దానిని మీ తరగతికి తగినట్లుగా సులభంగా సంగ్రహిస్తాను.
             </CardDescription>
@@ -218,7 +218,7 @@ export default function SummarizePage() {
               )}
             </CardContent>
           </Card>
-        )}
+        </Card>
       </div>
     </main>
   );

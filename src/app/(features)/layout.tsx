@@ -31,15 +31,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const getPageTitle = () => {
     switch (pathname) {
       case '/qa':
-        return 'Chat';
+        return 'చాట్';
       case '/summarize':
-        return 'Summarize';
+        return 'సంగ్రహం';
       case '/imagine':
-        return 'Imagine';
+        return 'చిత్రం';
       case '/history':
-        return 'History';
+        return 'చరిత్ర';
       case '/translate':
-          return 'Translate';
+          return 'అనువాదం';
       default:
         return 'తెలుగు తోడు';
     }
@@ -61,50 +61,50 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             {isClient && <>
                 <SidebarMenuItem>
                 <Link href="/qa">
-                  <SidebarMenuButton size="lg" isActive={pathname === "/qa"} tooltip="Chat">
+                  <SidebarMenuButton size="lg" isActive={pathname === "/qa"} tooltip="చాట్">
                     
                       <BotMessageSquare />
-                      <span>Chat</span>
+                      <span>చాట్</span>
                     
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <Link href="/summarize">
-                  <SidebarMenuButton size="lg" isActive={pathname === "/summarize"} tooltip="Summarize">
+                  <SidebarMenuButton size="lg" isActive={pathname === "/summarize"} tooltip="సంగ్రహం">
                     
                       <BookText />
-                      <span>Summarize</span>
+                      <span>సంగ్రహం</span>
                     
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <Link href="/imagine">
-                  <SidebarMenuButton size="lg" isActive={pathname === "/imagine"} tooltip="Imagine">
+                  <SidebarMenuButton size="lg" isActive={pathname === "/imagine"} tooltip="చిత్రం">
                     
                       <ImageIcon />
-                      <span>Imagine</span>
+                      <span>చిత్రం</span>
                     
                   </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
              <SidebarMenuItem>
                 <Link href="/translate">
-                    <SidebarMenuButton size="lg" isActive={pathname === "/translate"} tooltip="Translate">
+                    <SidebarMenuButton size="lg" isActive={pathname === "/translate"} tooltip="అనువాదం">
                         
                             <Languages />
-                            <span>Translate</span>
+                            <span>అనువాదం</span>
                         
                     </SidebarMenuButton>
                  </Link>
              </SidebarMenuItem>
              <SidebarMenuItem>
                 <Link href="/history">
-                  <SidebarMenuButton size="lg" isActive={pathname === "/history"} tooltip="History">
+                  <SidebarMenuButton size="lg" isActive={pathname === "/history"} tooltip="చరిత్ర">
                     
                       <History />
-                      <span>History</span>
+                      <span>చరిత్ర</span>
                     
                   </SidebarMenuButton>
                 </Link>
@@ -116,13 +116,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                  <SidebarMenu>
                     {isClient && <SidebarMenuItem>
                         <Link href="#">
-                            <SidebarMenuButton size="lg" isActive={pathname === "/profile"} tooltip="Profile">
+                            <SidebarMenuButton size="lg" isActive={pathname === "/profile"} tooltip="ప్రొఫైల్">
                                 
                                     <Avatar className="size-8">
                                         <AvatarImage src="https://placehold.co/100x100.png" alt="User Avatar" />
                                         <AvatarFallback>N</AvatarFallback>
                                     </Avatar>
-                                    <span>Profile</span>
+                                    <span>ప్రొఫైల్</span>
                                 
                             </SidebarMenuButton>
                         </Link>
