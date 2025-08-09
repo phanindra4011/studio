@@ -41,7 +41,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       case '/translate':
           return 'Translate';
       default:
-        return 'Vidyarthi AI';
+        return 'Telugu Thodu';
     }
   }
 
@@ -53,7 +53,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <Link href="/qa" className="flex items-center gap-3">
                 <Bot className="w-8 h-8 text-primary" />
                 <div className="flex flex-col group-data-[collapsible=icon]:hidden">
-                  <h1 className="text-xl font-bold font-headline">Vidyarthi AI</h1>
+                  <h1 className="text-xl font-bold font-headline">Telugu Thodu</h1>
                 </div>
             </Link>
           </SidebarHeader>
